@@ -5,22 +5,18 @@ const useRaf = (
   isActive
 ) => {
   const savedCallback = useRef();
-  const [t, setT] = useState(0);
+
   // Remember the latest function.
   useLayoutEffect(() => {
     savedCallback.current = callback;
   }, [callback]);
 
-  useLayoutEffect(()=>{
-    setT(Date.now())
-  }, [isActive])
-
   useLayoutEffect(() => {
     let animationFrame;
 
-    function tick() {
+    function tick(time) {
       loop();
-      savedCallback.current && savedCallback.current(Date.now() - t);
+      savedCallback.current && savedCallback.current(time);
     }
 
     function loop() {
@@ -33,7 +29,7 @@ const useRaf = (
         cancelAnimationFrame(animationFrame);
       };
     }
-  }, [t, isActive]);
+  }, [isActive]);
 }
 
 export default useRaf;

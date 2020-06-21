@@ -1,5 +1,11 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
 .App {
   text-align: center;
+  position: relative;
 }
 
 .App-header {
@@ -11,4 +17,31 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.box {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: pink;
+  transform-origin: center;
+  z-index: 2;
+}
+
+.pin {
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background-color: blue;
+  border-radius: 50%;
+  transform-origin: center;
+  z-index: 2;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
