@@ -26,6 +26,14 @@ const runner = Runner.create();
 // Matter.Render.run(render);
 
 const Physics = {
+  init: (bodies) => {
+    World.add(engine.world, Bodies.rectangle(width/2, height + 50, width * 4, 100, { isStatic: true }));
+    Events.on(engine, 'afterUpdate',()=>{
+      bodies.forEach((box)=>{
+        box.ref.current.style.transform = `translate(${box.physics.position.x - box.offsetX}px, ${box.physics.position.y - box.offsetY}px) rotate(${box.physics.angle}rad)`;
+      });
+    })
+  },
   run: () => { Runner.run(runner, engine); },
   start: () => { Runner.start(runner, engine); },
   stop: () => { Runner.stop(runner); },
