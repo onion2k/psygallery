@@ -14,6 +14,10 @@ const engine = Engine.create({
 
 const runner = Runner.create();
 
+/**
+ * Enable the renderer for debugging.
+ */
+
 // const render = Matter.Render.create({
 //   element: document.body,
 //   engine: engine,
@@ -27,7 +31,9 @@ const runner = Runner.create();
 
 const Physics = {
   init: (bodies) => {
-    World.add(engine.world, Bodies.rectangle(width/2, height + 50, width * 4, 100, { isStatic: true }));
+    World.add(engine.world, Bodies.rectangle(width/2, height + 50, width * 4, 100, { isStatic: true })); // bottom
+    World.add(engine.world, Bodies.rectangle(0, height * 0.5, 50, height, { isStatic: true })); // left
+    World.add(engine.world, Bodies.rectangle(width, height * 0.5, 50, height, { isStatic: true })); // right
     Events.on(engine, 'afterUpdate',()=>{
       bodies.forEach((box)=>{
         box.ref.current.style.transform = `translate(${box.physics.position.x - box.offsetX}px, ${box.physics.position.y - box.offsetY}px) rotate(${box.physics.angle}rad)`;

@@ -5,7 +5,7 @@ import './App.css';
 import Box from './Box';
 import Pin from './Pin';
 
-function Gallery() {
+function Gallery({images}) {
 
   const [active, setActive] = useState(false);
   const [bodies, setBodies] = useState([]);
@@ -54,7 +54,7 @@ function Gallery() {
 
   return (
     <div className="Gallery">
-      {[...Array(5).keys()].map((key, i)=>(<Box key={i} register={register} />))}
+      {images.map((image, i)=>(<Box key={i} register={register} image={image} />))}
       {[...Array(5).keys()].map((key, i)=>(<Pin key={i} register={register} />))}
       <button
         onClick={()=>setActive(!active)}

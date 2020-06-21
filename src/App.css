@@ -21,11 +21,14 @@ body {
 
 .box {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   background-color: pink;
   transform-origin: center;
   z-index: 2;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .pin {
