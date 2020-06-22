@@ -35,15 +35,11 @@ function Gallery({images}) {
     switch (shape) {
       case "circle":
         box.physics = Physics.Bodies.circle(x, y, width, { isStatic: locked });
-        box.offsetX = box.width;
-        box.offsetY = box.width;
         break;
 
       case "rect":
       default:
-        box.physics = Physics.Bodies.rectangle(x, y, width, height, { isStatic: locked });
-        box.offsetX = box.width * 0.5;
-        box.offsetY = box.height * 0.5;
+        box.physics = Physics.Bodies.rectangle(x, y, width, height, { isStatic: locked, frictionAir: 0.05 });
         break;
     }
 

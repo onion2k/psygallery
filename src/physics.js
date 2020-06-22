@@ -31,12 +31,15 @@ const runner = Runner.create();
 
 const Physics = {
   init: (bodies) => {
-    World.add(engine.world, Bodies.rectangle(width/2, height + 50, width * 4, 100, { isStatic: true })); // bottom
+    // World.add(engine.world, Bodies.rectangle(width/2, height + 50, width * 4, 100, { isStatic: true })); // bottom
     World.add(engine.world, Bodies.rectangle(0, height * 0.5, 50, height, { isStatic: true })); // left
     World.add(engine.world, Bodies.rectangle(width, height * 0.5, 50, height, { isStatic: true })); // right
     Events.on(engine, 'afterUpdate',()=>{
       bodies.forEach((box)=>{
-        box.ref.current.style.transform = `translate(${box.physics.position.x - box.offsetX}px, ${box.physics.position.y - box.offsetY}px) rotate(${box.physics.angle}rad)`;
+        if (box.physics.position.y > height + 200) {
+          Matter.Body.setPosition(box.physics, { x: box.physics.position.x, y: -300 })
+        }
+        box.ref.current.style.transform = `translate(${box.physics.position.x}px, ${box.physics.position.y}px) rotate(${box.physics.angle}rad)`;
       });
     })
   },

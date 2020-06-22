@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     const tempImages = [];
     const fetchRedditData = async () => {
-      return await fetch(`https://www.reddit.com/r/earthporn.json`)
+      return await fetch(`https://www.reddit.com/r/earthporn.json?limit=10`)
       .then(response => response.json())
     }
     fetchRedditData().then((data)=>{
