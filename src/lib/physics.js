@@ -34,7 +34,7 @@ const Physics = {
     // World.add(engine.world, Bodies.rectangle(width/2, height + 50, width * 4, 100, { isStatic: true })); // bottom
     World.add(engine.world, Bodies.rectangle(0, height * 0.5, 50, height, { isStatic: true })); // left
     World.add(engine.world, Bodies.rectangle(width, height * 0.5, 50, height, { isStatic: true })); // right
-    Events.on(engine, 'afterUpdate',()=>{
+    Events.on(engine, 'tick',()=>{
       bodies.forEach((box)=>{
         if (box.physics.position.y > height + 200) {
           Matter.Body.setPosition(box.physics, { x: box.physics.position.x, y: -300 })

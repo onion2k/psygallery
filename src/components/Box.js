@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import { width } from './dimensions.js';
+import React, { useState, useEffect, useRef } from 'react';
+import { width } from '../lib/dimensions.js';
 
-function Box({image, register}) {
+function Box({image, register, width, height}) {
   const ref = useRef();
 
   useEffect(()=>{
@@ -9,8 +9,8 @@ function Box({image, register}) {
       shape: 'rect',
       x: Math.random() * width,
       y: Math.random() * 800,
-      width: 180,
-      height: 180,
+      width,
+      height,
       locked: false,
       ref
     });

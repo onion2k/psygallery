@@ -1,15 +1,14 @@
-import React, { useEffect, useRef } from 'react';
-import { width, height } from './dimensions.js';
+import React, { useState, useEffect, useRef } from 'react';
 
-function Pin({register}) {
+function Pin({register, x, y, width}) {
   const ref = useRef();
 
   useEffect(()=>{
     register({
       shape: 'circle',
-      x: Math.random() * width,
-      y: Math.random() * height,
-      width: 10,
+      x,
+      y,
+      width,
       locked: true,
       ref
     });
